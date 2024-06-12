@@ -63,22 +63,22 @@ bot.hears("📱 Aloqa", async (msg) => {
             },
             'AutoEffect Abdullo',
         );
-        await msg.api.sendContact(msg.chat.id,
-            {
-                phone_number: '+998946840420',
-            },
-            'AutoEffect Mahmud',
-        );
-        await msg.api.sendContact(msg.chat.id,
-            {
-                phone_number: '+998901349282',
-            },
-            'AutoEffect service',
-        );
+        // await msg.api.sendContact(msg.chat.id,
+        //     {
+        //         phone_number: '+998946840420',
+        //     },
+        //     'AutoEffect Mahmud',
+        // );
+        // await msg.api.sendContact(msg.chat.id,
+        //     {
+        //         phone_number: '+998901349282',
+        //     },
+        //     'AutoEffect service',
+        // );
 
         console.log("Contact jo'natildi...");
     } catch (error) {
-        console.log("Contact jo'natishda xatolik");
+        console.log("Contact jo'natishda xatolik\n", error);
     }
 });
 
@@ -101,7 +101,7 @@ bot.hears("Plyonka", async (msg) => {
 
 })
 
-bot.hears("⬅️ Back", (msg) => {
+bot.hears("⬅️ Orqaga", (msg) => {
     console.log(session.lastButtons)
 
     if (['🛠️ Xizmatlar', '📱 Aloqa'].includes(session.lastButtons)) {
