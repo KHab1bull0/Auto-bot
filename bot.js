@@ -1,5 +1,5 @@
-import { Bot, session, Keyboard } from 'grammy';
-import { mainButtons, xizmatButtons, tanirovkaButtons } from './buttons/button.js';
+import { Bot, session, Keyboard, InlineKeyboard } from 'grammy';
+import { mainButtons, xizmatButtons, tanirovkaButtons, inline } from './buttons/button.js';
 import { config } from 'dotenv';
 config();
 
@@ -20,19 +20,32 @@ await bot.api.setMyCommands([
     { command: "aloqa", description: "📱 Bot Admini bilan bo'glanish" }
 ]);
 
+bot.on("inline_query", async (msg) => {
+    console.log(msg)
+
+    await msg.reply("nimagap");
+})
+
+bot.on('callback_query', async (msg) => {
+    if(session.lastButtons == '/start') {
+        console.log(msg.callbackQuery.data);
+        await msg.reply("nima")
+    };
+    session.lastButtons = msg.callbackQuery.data;
+})
+
 
 bot.command('start', async (msg) => {
-    console.log(msg.chat);
-    console.log(msg.from);
-
+    session.lastButtons = '/start';
     try {
         await msg.reply(`Botga xush kelibsiz 👐`, {
             reply_markup: mainButtons,
             parse_mode: "HTML"
+
         });
     } catch (error) {
         console.log('start commandda xatolik');
-        msg.reply(`Xatolik bo'ldi kodga qara` )
+        msg.reply(`Xatolik bo'ldi kodga qara`)
     }
 });
 
@@ -97,9 +110,7 @@ bot.hears("Tanirovka", (msg) => {
 bot.hears("Plyonka", async (msg) => {
     session.lastButtons = 'Plyonka'
     msg.reply('Plyonka', { reply_markup: tanirovkaButtons });
-
-
-})
+});
 
 bot.hears("⬅️ Orqaga", (msg) => {
     console.log(session.lastButtons)
