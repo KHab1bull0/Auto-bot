@@ -36,6 +36,10 @@ bot.on('callback_query', async (msg) => {
 
 
 bot.command('start', async (msg) => {
+    console.log(msg.from);
+    const chatId = msg.from.id;
+
+
     session.lastButtons = '/start';
     try {
         await msg.reply(`Botga xush kelibsiz 👐`, {
@@ -43,6 +47,8 @@ bot.command('start', async (msg) => {
             parse_mode: "HTML"
 
         });
+
+
     } catch (error) {
         console.log('start commandda xatolik');
         msg.reply(`Xatolik bo'ldi kodga qara`)
@@ -54,7 +60,7 @@ bot.command('aloqa', async (msg) => {
         const first_name = 'Jons'
         await msg.api.sendContact(msg.chat.id,
             {
-                phone_number: '+9989909157860',
+                phone_number: '+998909157860',
             },
             'Admin'
         );
