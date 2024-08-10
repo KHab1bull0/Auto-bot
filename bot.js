@@ -100,9 +100,9 @@ bot2.on('message', (msg) => {
 //     console.log(forwardId);
 //     console.log(msg);
 //     try {
-//         // await bot2.sendVideo(msg.from.id, './videos/tanirovka.mp4', { width: 450, height: 640, caption: "hello" });
-//         // const auto = -1001178845565
-//         // await bot2.forwardMessage(msg.from.id, forwardId, );
+        // await bot2.sendVideo(msg.from.id, './videos/tanirovka.mp4', { width: 450, height: 640, caption: "hello" });
+        // const auto = -1001178845565
+        // await bot2.forwardMessage(msg.from.id, forwardId, );
 //     } catch (e) {
 //         console.log(e)
 //     }
@@ -137,3 +137,4 @@ bot.hears("⬅️ Orqaga", (msg) => {
 
 
 bot.start();
+console.log("Bot ishga tushdi!");
